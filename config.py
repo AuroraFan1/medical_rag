@@ -1,13 +1,19 @@
 """
-配置文件
+完整的配置文件 - 医疗RAG系统
 """
 
 import os
+import sys
+
+# ==========================================
+# 路径配置
+# ==========================================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(BASE_DIR)
 
 # ==========================================
 # API 配置
 # ==========================================
-# 请在此处填写您的API密钥
 OPENAI_API_KEY = "sk-pxnrsirqipkyzvtwoptnypmwtoduzkfvtgnjjyelasfcmiyj"
 OPENAI_API_BASE = "https://api.siliconflow.cn/v1"
 
@@ -18,9 +24,9 @@ os.environ["OPENAI_API_BASE"] = OPENAI_API_BASE
 # ==========================================
 # 模型配置
 # ==========================================
+# 使用本地嵌入模型，避免API问题
 MODEL_NAME = "Qwen/Qwen2.5-7B-Instruct"
-# EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-EMBEDDING_MODEL = "BAAI/bge-m3"
+EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 LLM_TEMPERATURE = 0.1
 
 # ==========================================
@@ -31,12 +37,20 @@ APP_ICON = "🏥"
 
 # 数据配置
 DATA_DIR = "data"
-VECTOR_STORE_PATH = "chroma_db_medical"
+VECTOR_STORE_PATH = "chroma_db_medical_temp"
 
 # RAG配置
-CHUNK_SIZE = 500
-CHUNK_OVERLAP = 100
+CHUNK_SIZE = 300  # 减小块大小以加快处理速度
+CHUNK_OVERLAP = 50
 RETRIEVAL_K = 5
+
+# ==========================================
+# 数据处理配置
+# ==========================================
+# 用于测试的配置（完整运行时可以调整）
+MAX_CASES_PER_YEAR = 50000  # 每年来最大病例数
+BATCH_SIZE = 1000  # 批量处理大小
+TEST_MODE = False  # 设为True则只处理少量数据
 
 # ==========================================
 # 提示词模板
@@ -71,9 +85,9 @@ EXAMPLE_QUESTIONS = [
     "前列腺炎怎么治疗？",
     "孩子咳嗽喘气是什么问题？",
     "高血压的正常范围是多少？",
-    "抑郁症有哪些症状？",
+    "感冒吃什么药？",
+    "胃痛怎么办？",
     "腰椎间盘突出怎么治疗？",
-    "甲状腺结节需要手术吗？"
 ]
 
 # ==========================================
@@ -90,3 +104,9 @@ DISCLAIMER_TEXT = """
 
 如有健康问题，请及时咨询医生。
 """
+
+# ==========================================
+# 日志配置
+# ==========================================
+LOG_LEVEL = "INFO"
+LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
