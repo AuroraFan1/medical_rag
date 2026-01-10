@@ -1,0 +1,42 @@
+# 基础依赖
+torch>=2.0.0
+transformers>=4.35.0
+accelerate>=0.24.0
+peft>=0.6.0
+datasets>=2.14.0
+
+# 向量数据库
+chromadb>=0.4.18
+faiss-cpu>=1.7.4  # 或 faiss-gpu 用于GPU加速
+sentence-transformers>=2.2.0
+
+# 数据处理
+pandas>=2.0.0
+numpy>=1.24.0
+jieba>=0.42.1
+rank-bm25>=0.2.2
+
+# 评估指标
+evaluate>=0.4.0
+rouge-score>=0.1.2
+bert-score>=0.3.13
+nltk>=3.8.0
+scikit-learn>=1.3.0
+
+# Web界面
+streamlit>=1.28.0
+plotly>=5.17.0
+
+# API支持
+openai>=1.3.0
+backoff>=2.2.0
+
+# 开发工具
+black>=23.0.0
+isort>=5.12.0
+pytest>=7.4.0
+
+# 其他
+tensorboard>=2.14.0
+tqdm>=4.66.0
+pillow>=10.0.0
