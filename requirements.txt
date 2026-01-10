@@ -1,0 +1,12 @@
+langchain langchain-community langchain-openai chromadb python-dotenv streamlit
+scikit-learn
+torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu118
+transformers
+peft
+trl
+tensorboard
+rouge
+nltk
+transformers
+datasets
+sentence-transformers
